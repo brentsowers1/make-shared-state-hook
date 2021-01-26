@@ -31,7 +31,11 @@ const CounterIncrementer = () => {
     <div>
       <div>Counter value in incrementer component: {counter}</div>
       <div>
-        <input type="submit" value="Increment Counter" onClick={() => setCounter(old => old + 1)} />
+        <input
+          type="submit"
+          value="Increment Counter"
+          onClick={() => setCounter(old => old + 1)}
+        />
       </div>
     </div>
   );
