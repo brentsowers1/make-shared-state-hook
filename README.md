@@ -81,7 +81,7 @@ For a complete example in a full application, see https://github.com/brentsowers
 
 # Why make this library?
 
-I wrote up ... to explain my analysis and journey of why I decided to write this library, and why I feel the other options out there (context, prop drilling, redux) aren't the best options. 
+I wrote up https://www.brentsowers.com/2021/01/best-options-for-sharing-state-between.html to explain my analysis and journey of why I decided to write this library, and why I feel the other options out there (context, prop drilling, redux) aren't the best options. 
 
 # Inspiration/credit
 
