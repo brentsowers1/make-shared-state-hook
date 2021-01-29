@@ -86,7 +86,7 @@ For a complete example in a full application, see https://github.com/brentsowers
 # Best practices
 
 * Only use this to store simple data and don't use it for large objects. Like useState it's not real smart - if you are storing a complex object with this, then a call to set the state, even if just one part of this complex object changed, will trigger all users of the state to update regardless of whether they need the specific part of the object you updated. There's no logic to only subscribe for updates to specific parts of the data you're storing.
-* If you want to share a large complex object, decompose it in to smaller objects, or better yet, decompose in to many different pieces of simple non-object data. Just like useState - don't be tempted to make a big state object. Performance will be better breaking down in to smaller pieces, and your application will be less fragile because you'll only be using the specific pieces of data you need in each section, and the code won't be able to overwrite data that it never needs to use.Example:
+* If you want to share a large complex object, decompose it in to smaller objects, or better yet, decompose in to many different pieces of simple non-object data. Just like useState - don't be tempted to make a big state object. Performance will be better breaking down in to smaller pieces, and your application will be less fragile because you'll only be using the specific pieces of data you need in each section, and the code won't be able to overwrite data that it never needs to use. Example:
 ```javascript
   // Bad approach:
   const formFilters = {
