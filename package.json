@@ -1,6 +1,6 @@
 {
   "name": "make-shared-state-hook",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Simple library for React 16.8+ to share state between components with useState like syntax",
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0"

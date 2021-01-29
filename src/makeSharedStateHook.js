@@ -13,10 +13,12 @@ function setCustomHookState(newValueOrSetterFunction) {
   if (typeof newValueOrSetterFunction === 'function') {
     newValue = newValueOrSetterFunction(this.state);
   }
-  this.state = newValue;
-  this.listeners.forEach(listener => {
-    listener(this.state);
-  });
+  if (newValue !== this.state) {
+    this.state = newValue;
+    this.listeners.forEach(listener => {
+      listener(this.state);
+    });
+  }
 }
 
 /**
