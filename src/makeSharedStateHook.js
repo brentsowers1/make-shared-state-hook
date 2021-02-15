@@ -72,10 +72,10 @@ function useCustomHook(React) {
  *          array of the current value of the state, and a function to set the
  *          state value, just like useState.
  */
-const makeSharedStateHook = (React, initialValue) => {
+function makeSharedStateHook(React, initialValue) {
   const store = { state: initialValue, listeners: [] };
   store.setState = setCustomHookState.bind(store);
   return useCustomHook.bind(store, React);
 };
 
-export default makeSharedStateHook;
+module.exports = makeSharedStateHook;

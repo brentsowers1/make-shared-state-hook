@@ -1,1 +1,1 @@
-export { default as makeSharedStateHook } from './makeSharedStateHook';
+module.exports.makeSharedStateHook = require('./makeSharedStateHook');
