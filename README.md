@@ -5,7 +5,7 @@ Simply add this as a dependency to your project, and you can create a piece of s
 
 # Why should I use this library?
 
-This library is ideal for small to medium complexity applications, when you have use cases where you need to share some state data between components at different levels of the application. I wrote up https://www.brentsowers.com/2021/01/best-options-for-sharing-state-between.html to explain my analysis and journey of why I decided to write this library, and why I feel the other options out there (context, prop drilling, redux) aren't the best options.
+This library is ideal for when you need to share some state data between components at different levels of the application. I wrote up https://www.brentsowers.com/2021/01/best-options-for-sharing-state-between.html to explain my analysis and journey of why I decided to write this library, and why I feel the other options out there (context, prop drilling, redux) aren't the best options. This library is simple enough to use as well that it can easily be mixed in with other approaches for sharing state like context and redux. You can easily start using this for new use cases without needing to refactor your previous approaches for sharing state. The syntax is easy enough to read that it won't be confusing to see this used along side other approaches.
 
 # Example Usage
 
@@ -51,7 +51,7 @@ const CounterDisplay = () => {
 };
 
 const LoggedInUserSetter = () => {
-  const setUser = useLoggedInUser()[1];
+  const [, setUser] = useLoggedInUser();
   return (
     <div>
       Set logged in user name -&nbsp;
@@ -81,7 +81,14 @@ export default MakeSharedStateHookExample;
 
 That's it! No dealing with actions, dispatches, reducers, etc. Make as much data as you want with different calls to makeSharedStateHook - how you structure and use the data is up to you and each piece of data has no effect on any other data.
 
-For a complete example in a full application, see https://github.com/brentsowers1/make-shared-state-hook-example.
+## Full application example
+For a complete example in a full application, see [example_application](https://github.com/brentsowers1/make-shared-state-hook//tree/main/example_application/) - that is a full React application that you can run with:
+```bash
+cd example_application
+npm install
+npm start
+```
+This doesn't get packaged the `make-shared-state-hook` npm package, so if you want to see this you'll need to clone the github repo (https://github.com/brentsowers1/make-shared-state-hook).
 
 # Best practices
 
@@ -89,19 +96,19 @@ For a complete example in a full application, see https://github.com/brentsowers
 * If you want to share a large complex object, decompose it in to smaller objects, or better yet, decompose in to many different pieces of simple non-object data. Just like useState - don't be tempted to make a big state object. Performance will be better breaking down in to smaller pieces, and your application will be less fragile because you'll only be using the specific pieces of data you need in each section, and the code won't be able to overwrite data that it never needs to use. Example:
 ```javascript
   // Bad approach:
-  const formFilters = {
+  const formFiltersDefaults = {
     daysAgo: 30,
     searchTerm: '',
     status: 'NEW',
   };
-  export const useFormFilters = makeSharedStateHook(React, formFilters);
+  export const useFormFilters = makeSharedStateHook(React, formFiltersDefaults);
 
   // Good approach:
   export const useDaysAgoFilter = makeSharedStateHook(React, 30);
   export const useSearchTermFilter = makeSharedStateHook(React, '');
   export const useStatusFilter = makeSharedStateHook(React, 'NEW');
 ```
-* Stick to local state with useState if you only need to share data between components that are 1 or 2 levels apart. Only use this on data that you really need to share at different component levels. Even though it's simple to make shared state with this, your application will get unnecessarily complex once you start having different components using the same data. Use local state and pass the values down as props just one level if you can get away with it!
+* Stick to local state with useState if you only need to share data between components that are 1 or 2 levels apart. Only use this on data that you really need to share at different component levels. Even though it's simple to make shared state with this, your application will get more complex once you start having different components using the same data. Use local state and pass the values down as props just one level if you can get away with it!
 * If your component wants to do something other than render differently when the state changes somewhere else, like make an API call if the state value changes, call useEffect and specify the state value as a dependency. Your useEffect function will then get called immediately when the state value changes somewhere else. Example snippet using the example code from above:
 ```javascript
    const [user] = useLoggedInUser();
@@ -109,11 +116,11 @@ For a complete example in a full application, see https://github.com/brentsowers
    // renders - not just when the dependency value changes
    useEffect(() => console.log('user changed!'), [user]);
 ```
-* If updating the data is complex, and you want some wrapper functions around updating the data, this library probably doesn't make sense for that use case. [use-global-hook](https://www.npmjs.com/package/use-global-hook), or using context and providing your custom function in the context object (described as option 2 in https://www.brentsowers.com/2021/01/best-options-for-sharing-state-between.html) might be a better fit for that use case.
+* If updating the data is complex, and you want some wrapper functions around updating the data, this library might not make sense for that use case. [use-global-hook](https://www.npmjs.com/package/use-global-hook), or using context and providing your custom function in the context object (described as option 2 in https://www.brentsowers.com/2021/01/best-options-for-sharing-state-between.html) might be a better fit for that use case.
 * You don't need to go all in and use this library for all shared state. The usage of this is simple enough and easy enough to understand when looking at the code that you can definitely use this approach for your simple state sharing cases and use something more complex for the really complicated state sharing cases.
 
 # Inspiration/credit
 
 The library [use-global-hook](https://www.npmjs.com/package/use-global-hook) and the blog post describing the building of this (https://medium.com/javascript-in-plain-english/state-management-with-react-hooks-no-redux-or-context-api-8b3035ceecf8) opened my eyes to the power of custom hooks. Check that library out - that may suit your needs better than this library.
 
-Also while I was about to publish this library, I found [react-shared-state-maker](https://github.com/fixiabis/react-shared-state-maker). This library is nearly identical to what I wrote, so great minds must think alike? The reason I decided to still write my own library is that react-shared-state-maker has some dependencies, but I wanted a library that had no dependencies at all other than a peer dependency on React, I don't want anyone to have to deal with a different version of React in their application than what this library has.
+Also while I was about to publish this library, I found [react-shared-state-maker](https://github.com/fixiabis/react-shared-state-maker). This library is very similar to what I wrote, so great minds must think alike! The reason I decided to still write my own library is that react-shared-state-maker has some dependencies, but I wanted a library that had no dependencies at all other than a peer dependency on React, I don't want anyone to have to deal with a different version of React in their application than what this library has.

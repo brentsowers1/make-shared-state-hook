@@ -1,13 +1,19 @@
 {
   "name": "make-shared-state-hook",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Simple library for React 16.8+ to share state between components with useState like syntax",
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0"
   },
   "main": "src/index.js",
+  "files": [
+    "src/index.js",
+    "src/makeSharedStateHook.js",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cd example_application; npm install; npm test"
   },
   "repository": {
     "type": "git",
@@ -18,5 +24,11 @@
   "bugs": {
     "url": "https://github.com/brentsowers1/make-shared-state-hook/issues"
   },
-  "homepage": "https://github.com/brentsowers1/make-shared-state-hook#readme"
+  "homepage": "https://github.com/brentsowers1/make-shared-state-hook#readme",
+  "keywords": [
+    "react",
+    "hooks",
+    "state",
+    "shared-state"
+  ]
 }
