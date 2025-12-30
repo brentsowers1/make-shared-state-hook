@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLoggedInUser } from '../lib/sharedState';
 
 const LoggedInUserDisplay = () => {

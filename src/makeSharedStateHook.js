@@ -78,4 +78,4 @@ function makeSharedStateHook(React, initialValue) {
   return useCustomHook.bind(store, React);
 };
 
-module.exports = makeSharedStateHook;
+export default makeSharedStateHook;

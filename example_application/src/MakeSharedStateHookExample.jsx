@@ -1,8 +1,7 @@
-import React from 'react';
-import CounterDisplay from './components/counterDisplay';
-import CounterIncrementer from './components/counterIncrementer';
-import LoggedInUserDisplay from './components/loggedInUserDisplay';
-import LoggedInUserSetter from './components/loggedInUserSetter';
+import CounterDisplay from './components/counterDisplay.jsx';
+import CounterIncrementer from './components/counterIncrementer.jsx';
+import LoggedInUserDisplay from './components/loggedInUserDisplay.jsx';
+import LoggedInUserSetter from './components/loggedInUserSetter.jsx';
 
 const MakeSharedStateHookExample = () => {
   return (

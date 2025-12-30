@@ -3,6 +3,8 @@ Simple library for React 16.8+ to share state between components with useState l
 
 Simply add this as a dependency to your project, and you can create a piece of shared state with one line, and use it in a component with one line just like useState! 
 
+This is a published NPM package at https://www.npmjs.com/package/make-shared-state-hook
+
 # Why should I use this library?
 
 This library is ideal for when you need to share some state data between components at different levels of the application. I wrote up https://www.brentsowers.com/2021/01/best-options-for-sharing-state-between.html to explain my analysis and journey of why I decided to write this library, and why I feel the other options out there (context, prop drilling, redux) aren't the best options. This library is simple enough to use as well that it can easily be mixed in with other approaches for sharing state like context and redux. You can easily start using this for new use cases without needing to refactor your previous approaches for sharing state. The syntax is easy enough to read that it won't be confusing to see this used along side other approaches.
@@ -21,7 +23,7 @@ export const useCounter = makeSharedStateHook(React, 0);
 export const useLoggedInUser = makeSharedStateHook(React, '');
 ```
 
-Here's an example using both, `MakeSharedStateHookExample.js`:
+Here's an example using both, `MakeSharedStateHookExample.jsx`:
 ```jsx
 import React from 'react';
 import { useCounter, useLoggedInUser } from './sharedState';
@@ -88,7 +90,7 @@ cd example_application
 npm install
 npm start
 ```
-This doesn't get packaged the `make-shared-state-hook` npm package, so if you want to see this you'll need to clone the github repo (https://github.com/brentsowers1/make-shared-state-hook).
+This doesn't get packaged with the `make-shared-state-hook` npm package, so if you want to see this you'll need to clone the github repo (https://github.com/brentsowers1/make-shared-state-hook).
 
 # Best practices
 
