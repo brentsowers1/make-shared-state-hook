@@ -1,3 +1,4 @@
+import React from 'react';
 import CounterDisplay from './components/counterDisplay.jsx';
 import CounterIncrementer from './components/counterIncrementer.jsx';
 import LoggedInUserDisplay from './components/loggedInUserDisplay.jsx';

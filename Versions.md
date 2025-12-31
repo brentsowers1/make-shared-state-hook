@@ -1,11 +1,11 @@
-## 1.3.0 (2025-12-30)
+## 1.3.0 (2025-12-31)
 * Updated React peer dependency to allow React 18 and 19
 * Removed all usage of CommonJS require - now using ES import and export. This was in the index.js file.
+* Added eslint
 * Refactored the example appliction:
     * Upgrades React from 17 to the latest (19.2)
     * Uses vite for building, testing, and running a local server instead of react-scripts which has been deprecated
     * Renamed component files from js to jsx
-    * Added eslint
 
 ## 1.2.1 (2021-03-06)
 * A few documentation updates, and added a full react application example in example_application (not included in the package, only on the github repo)
